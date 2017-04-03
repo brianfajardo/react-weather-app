@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 import Chart from '../components/chart'
+import GoogleMap from '../components/google_map'
 
 const StyledTable = styled.table`
 > thead > tr > th {
@@ -13,6 +14,10 @@ const StyledTable = styled.table`
     vertical-align: middle;
     width: 25%
 }
+td:first-of-type, td:first-of-type > div {
+    height: 200px;
+    width: 250px;
+}
 `
 
 class WeatherList extends Component {
@@ -22,10 +27,11 @@ class WeatherList extends Component {
         const temperatures = cityData.list.map(weather => weather.main.temp)
         const pressures = cityData.list.map(weather => weather.main.pressure)
         const humidities = cityData.list.map(weather => weather.main.humidity)
+        const { lon, lat } = cityData.city.coord
 
         return (
             <tr key={city}>
-                <td >{city}</td>
+                <td ><GoogleMap lon={lon} lat={lat} /></td>
                 <td><Chart data={temperatures} units='°F' color='#22B14C' /></td>
                 <td><Chart data={pressures} units='hPa' color='#6699CC' /></td>
                 <td><Chart data={humidities} units='%' color='#F98A4F' /></td>
