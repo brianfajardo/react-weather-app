@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import styled from 'styled-components'
+
 
 import { fetchWeather } from '../actions/index'
+
+const StyledForm = styled.form`
+margin: 30px 0px
+`
 
 class SearchBar extends Component {
     constructor(props) {
@@ -30,7 +36,7 @@ class SearchBar extends Component {
 
     render() {
         return (
-            <form
+            <StyledForm
                 className='input-group'
                 onSubmit={this.onFormSubmit}>
                 <input
@@ -43,7 +49,7 @@ class SearchBar extends Component {
                         Search
                     </button>
                 </span>
-            </form>
+            </StyledForm>
         )
     }
 }
