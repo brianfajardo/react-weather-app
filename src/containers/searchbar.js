@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import styled from 'styled-components'
 
 
@@ -54,10 +53,8 @@ class SearchBar extends Component {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    // Allow actions to flow down into the middleware and then the reducers
-    // inside Redux app
-    return bindActionCreators({ fetchWeather }, dispatch)
-}
+// Allow actions to flow down into the middleware and then the reducers
+// inside Redux app
+const mapDispatchToProps = dispatch => ({ fetchWeather }, dispatch)
 
 export default connect(null, mapDispatchToProps)(SearchBar)

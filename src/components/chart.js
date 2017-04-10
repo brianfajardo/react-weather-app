@@ -2,11 +2,11 @@ import React from 'react'
 import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-sparklines'
 import _ from 'lodash'
 
-function average(data) {
+const average = data => {
     return _.round(_.sum(data)/data.length)
 }
 
-export default (props) => {
+export default props => {
     return (
         <div>
             <Sparklines height={120} data={props.data}>
